@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Saved Records</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1>Saved Records</h1>
+
+        <table>
+
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Age</th>
+                <th>Gender</th>
+                <th>Contact</th>
+                <th>Aadhar</th>
+                <th>Profession</th>
+                <th>Action</th>
+            </tr>
+
+            {% for person in records %}
+
+            <tr>
+                <td>{{ person[0] }}</td>
+                <td>{{ person[1] }}</td>
+                <td>{{ person[2] }}</td>
+                <td>{{ person[3] }}</td>
+                <td>{{ person[4] }}</td>
+                <td>{{ person[5] }}</td>
+                <td>{{ person[6] }}</td>
+                <td>
+    <a class="delete-btn"
+       href="/delete/{{ person[0] }}"
+       onclick="return confirm('Delete this record?')">
+       Delete
+    </a>
+</td>
+            </tr>
+
+            {% endfor %}
+
+        </table>
+
+        <a class="back-btn" href="/">
+            Add New Record
+        </a>
+
+    </div>
+
+</body>
+
+</html>
